@@ -143,6 +143,7 @@ function run_test_case() {
     cd $1
 
     ACTUAL_YAML_FILE=@(cilium|kubearmor)_policies*.yaml
+		start_and_wait_for_KnoxAutoPolicy_initialization
 
     for JSON_FILE in $(ls -r $TC_*.json); do
         for EXPECTED_YAML_FILE in $(ls -r $TC_*.yaml); do
