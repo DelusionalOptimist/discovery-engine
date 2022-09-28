@@ -3,6 +3,7 @@ package libs
 import (
 	"database/sql"
 	"encoding/json"
+	"fmt"
 	"strconv"
 	"strings"
 	"time"
@@ -58,6 +59,7 @@ func connectMySQL(cfg types.ConfigDB) (db *sql.DB) {
 
 	dbconn := cfg.DBUser + ":" + cfg.DBPass + "@tcp(" + cfg.DBHost + ":" + cfg.DBPort + ")/" + cfg.DBName
 	db, err := sql.Open(cfg.DBDriver, dbconn)
+	fmt.Println(dbconn)
 	for err != nil {
 		log.Error().Msgf("mysql driver:%s, user:%s, host:%s, port:%s, dbname:%s conn-error:%s",
 			cfg.DBDriver, cfg.DBUser, cfg.DBHost, cfg.DBPort, cfg.DBName, err.Error())

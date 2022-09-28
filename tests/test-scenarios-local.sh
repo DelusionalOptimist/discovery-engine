@@ -25,10 +25,11 @@ COUNT_TESTS=0
 
 res_start_service=0
 
+# detects whether knoxAutoPolicy started
 function start_and_wait_for_KnoxAutoPolicy_initialization() {
     export CONF_FILE_NAME=local
 
-    $AUTOPOL_HOME/src/knoxAutoPolicy -config-path=$AUTOPOL_HOME/tests/conf &
+    $AUTOPOL_HOME/src/knoxAutoPolicy -config-path=$AUTOPOL_HOME/tests/conf
     echo $?
     if [ $? != 0 ]; then
         res_start_service=1
@@ -213,12 +214,10 @@ function run_test_case() {
 
 cd $AUTOPOL_SRC_HOME
 
-if [ ! -f KnoxAutoPolicy ]; then
-    echo -e "${ORANGE}[INFO] Building KnoxAutoPolicy${NC}"
-    make clean >/dev/null
-    make >/dev/null
-    echo "[INFO] Built KnoxAutoPolicy"
-fi
+echo -e "${ORANGE}[INFO] Building KnoxAutoPolicy${NC}"
+make clean >/dev/null
+make >/dev/null
+echo "[INFO] Built KnoxAutoPolicy"
 
 ## Step 2. Start MySQL database
 

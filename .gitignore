@@ -13,4 +13,5 @@ kubearmor_policies*.yaml
 cilium_policies*.yaml
 knox_net_policies*.yaml
 src/accuknox*.db*
+test-flow.json
 
